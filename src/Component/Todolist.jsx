@@ -13,15 +13,15 @@ function TodoList() {
   const [todos, setTodos] = useState([]);
   const [inputvalue, setInputValue] = useState('');
   const [editIndex, setEditIndex] = useState(-1);
-  const [currentTime, setCurrentTime] = useState(new Date()); // State for current time
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  // useEffect to update the clock every second
+  // Live Clock
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup on unmount
+    return () => clearInterval(timer);
   }, []);
 
   const addTodo = () => {
@@ -33,12 +33,11 @@ function TodoList() {
           completed: updateTodos[editIndex].completed
         };
         setTodos(updateTodos);
-        setInputValue('');
         setEditIndex(-1);
       } else {
         setTodos([...todos, { task: inputvalue, completed: false }]);
-        setInputValue('');
       }
+      setInputValue('');
     }
   };
 
@@ -64,9 +63,8 @@ function TodoList() {
 
   return (
     <div className="todo-container">
-      <h1>MY Todo List</h1>
+      <h1>ADD YOUR TASK TO THE TODO LIST!!!!</h1>
 
-      {/* Display current time */}
       <div className="current-time">
         Current Time: {currentTime.toLocaleTimeString()}
       </div>
@@ -96,29 +94,30 @@ function TodoList() {
         )}
       </div>
 
-      <ul className="todo-list">
-        {todos.map((todo, index) => (
-          <li key={index} className={todo.completed ? 'completed' : ''}>
-            {todo.task}
-            <div className="btn-group">
-              <button onClick={() => startEdit(index)} className="btn-edit">
-                <BiEdit />
-              </button>
-
-              <button onClick={() => removeTodo(index)} className="btn-remove">
-                <BiTrash />
-              </button>
-
-              <button
-                className="btn-done"
-                onClick={() => toggleCompleted(index)}
-              >
-                {todo.completed ? <BiReset /> : <BiCheckCircle />}
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      
+      <div className="content-scroll">
+        <ul className="todo-list">
+          {todos.map((todo, index) => (
+            <li key={index} className={todo.completed ? 'completed' : ''}>
+              {todo.task}
+              <div className="btn-group">
+                <button onClick={() => startEdit(index)} className="btn-edit">
+                  <BiEdit />
+                </button>
+                <button onClick={() => removeTodo(index)} className="btn-remove">
+                  <BiTrash />
+                </button>
+                <button
+                  className="btn-done"
+                  onClick={() => toggleCompleted(index)}
+                >
+                  {todo.completed ? <BiReset /> : <BiCheckCircle />}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

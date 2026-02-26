@@ -1,95 +1,178 @@
 body{
-background-color:#ffcc66;
+  background-color:#f39c12;
 }
+
 .todo-container{
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    border: 3px solid #ccc;
-    background-color: #4b4848;
-    box-shadow: 3 4px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 3px solid #ccc;
+  background-color: #4b4848;
+  box-shadow: 3 4px rgba(0,0,0,0.1);
 }
-.h1{
-    color:#ffcc66;
-    text-align: center;
+
+h1{
+  color:#ffcc66;
+  text-align: center;
 }
+
 .current-time {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: skyblue;
-    margin-bottom: 15px;
-    font-family: 'Arial', sans-serif;
-    background-color: #333;
-    padding: 5px 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: skyblue;
+  margin-bottom: 15px;
+  background-color: #333;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
+
 .input-section{
-    display: flex;
-    margin-bottom: 10px;
+  display: flex;
+  margin-bottom: 10px;
 }
+
 .input-field{
-    flex:1;
-    padding: 8px;
-    margin-right: 10px;
-    border-radius: 10px 0 10px 0;
-    border: 1px solid #ffcc66;
+  flex:1;
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 10px 0 10px 0;
+  border: 1px solid #ffcc66;
 }
+
 .add-btn-btn,.update-btn,.cancel-btn{
-    padding: 8px 8px;
-    border: none;
-    border-radius: 10px 0 10px 0;
-    cursor: pointer;
-    background-color: #ffcc66;
-    color: black;
-    font-size: 20px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px 0 10px 0;
+  cursor: pointer;
+  background-color: #ffcc66;
+  color: black;
+  font-size: 20px;
 }
+
 .add-btn-btn:hover,.update-btn:hover,.cancel-btn:hover{
-    background-color: #000;
-    color: #ffcc66;
-    border: 1px solid #ffcc66;
+  background-color: #000;
+  color: #ffcc66;
+  border: 1px solid #ffcc66;
 }
+
+
+.content-scroll{
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ffcc66;
+  border-radius: 10px;
+}
+
 .todo-list{
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .todo-list li{
-    margin: 8px;
-    padding: 4px;
-    border-radius: 10px 0 10px 0;
-    border:1px solid #ffcc66;
-    color:#fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-
-
+  margin: 8px;
+  padding: 6px;
+  border-radius: 10px 0 10px 0;
+  border:1px solid #ffcc66;
+  color:#fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
+.todo-list li:nth-child(4n+1){
+  background: linear-gradient(90deg,#ff7614,#ff5411);
+}
+
+.todo-list li:nth-child(4n+2){
+  background: linear-gradient(90deg,#e459b6,#e74c3c);
+}
+
+.todo-list li:nth-child(4n+3){
+  background: linear-gradient(90deg,#1abc9c,#3498db);
+}
+
+.todo-list li:nth-child(4n+4){
+  background: linear-gradient(90deg,#f1c40f,#f39c12);
+}
+
 .todo-list li.completed{
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-.btn-group button{
-    margin: left;
-    padding: 5px 5px;
-    border-radius: 10px 0 10px 0;
-    cursor: pointer;
-    background-color: inherit;
-    font-size: 20px;
-    font-weight: 400;
-}
-.btn-edit{
-    color: rgb(4,248,2);
-}
-.btn-remove{
-    color: rgb(247,4,4);
-}
-.btn-done{
-    color: rgb(247,224,4);
-}
-.btn-group:hover{
-    opacity: 0.8;
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
+.btn-group button{
+  padding:5px;
+  border:none;
+  background:transparent;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.btn-edit{ color: rgb(4,248,2); }
+.btn-remove{ color: rgb(247,4,4); }
+.btn-done{ color: rgb(247,224,4); }
+
+.btn-group:hover{
+  opacity:0.8;
+}
+
+@media (max-width: 600px){
+
+  .todo-container{
+    max-width: 95%;
+    margin: 10px auto;
+    padding: 8px;
+  }
+
+  h1{
+    font-size: 18px;
+  }
+
+  .current-time{
+    font-size: 16px;
+    padding: 4px 6px;
+  }
+
+  .input-section{
+    flex-direction: column;
+  }
+
+  .input-field{
+    margin-right: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .add-btn-btn,
+  .update-btn,
+  .cancel-btn{
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .content-scroll{
+    height: 300px; 
+  }
+
+  .todo-list li{
+    font-size: 14px;
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-group{
+    margin-top: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-group button{
+    font-size: 18px;
+  }
+}
