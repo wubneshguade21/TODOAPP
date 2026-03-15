@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   BiCheckDouble,
   BiEdit,
   BiTrash,
   BiCheckCircle,
   BiReset,
-  BiRefresh
-} from 'react-icons/bi';
-import './Todolist.css';
+  BiRefresh,
+} from "react-icons/bi";
+import "./Todolist.css";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
-  const [inputvalue, setInputValue] = useState('');
+  const [inputvalue, setInputValue] = useState("");
   const [editIndex, setEditIndex] = useState(-1);
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -25,19 +25,19 @@ function TodoList() {
   }, []);
 
   const addTodo = () => {
-    if (inputvalue.trim() !== '') {
+    if (inputvalue.trim() !== "") {
       if (editIndex !== -1) {
         const updateTodos = [...todos];
         updateTodos[editIndex] = {
           task: inputvalue,
-          completed: updateTodos[editIndex].completed
+          completed: updateTodos[editIndex].completed,
         };
         setTodos(updateTodos);
         setEditIndex(-1);
       } else {
         setTodos([...todos, { task: inputvalue, completed: false }]);
       }
-      setInputValue('');
+      setInputValue("");
     }
   };
 
@@ -47,7 +47,7 @@ function TodoList() {
   };
 
   const cancelEdit = () => {
-    setInputValue('');
+    setInputValue("");
     setEditIndex(-1);
   };
 
@@ -63,7 +63,7 @@ function TodoList() {
 
   return (
     <div className="todo-container">
-      <h1>ADD YOUR TASK TO THE TODO LIST!!!!</h1>
+      <h1>⏰ADD YOUR TASK TO THE TODO LIST!!!! ⏰</h1>
 
       <div className="current-time">
         Current Time: {currentTime.toLocaleTimeString()}
@@ -94,17 +94,19 @@ function TodoList() {
         )}
       </div>
 
-      
       <div className="content-scroll">
         <ul className="todo-list">
           {todos.map((todo, index) => (
-            <li key={index} className={todo.completed ? 'completed' : ''}>
+            <li key={index} className={todo.completed ? "completed" : ""}>
               {todo.task}
               <div className="btn-group">
                 <button onClick={() => startEdit(index)} className="btn-edit">
                   <BiEdit />
                 </button>
-                <button onClick={() => removeTodo(index)} className="btn-remove">
+                <button
+                  onClick={() => removeTodo(index)}
+                  className="btn-remove"
+                >
                   <BiTrash />
                 </button>
                 <button
